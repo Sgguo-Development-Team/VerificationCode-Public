@@ -1,5 +1,4 @@
 <?php
-// 每天射8000L, 这才是好的 Helper 类!
 namespace CumInYourAss\Helper;
 
 use CURLFile;
@@ -14,12 +13,12 @@ class GetImage
 {
     private $DbConfig = 'something you should not known';
     private $Cache = ['t' => '默认值'];
-
+    // 这个是 Lsky v3 的模板，建议自己做
     public static function uploadFilesToWeb($file)
     {
         $ch = curl_init('https://service-picbed.sgguo.com/api/v1/upload');
         curl_setopt_array($ch,
-            [CURLOPT_RETURNTRANSFER => true, CURLOPT_HTTPHEADER => ['Authorization: Bearer 1|fduYqgOHnR6aC77ZEtTyaaWKEGolnXO4q9yTSNkT', 'Content-Type: multipart/form-data'], CURLOPT_POST => true, CURLOPT_POSTFIELDS => ['file' => new CURLFile($file)], CURLOPT_TIMEOUT => 20, CURLOPT_SSL_VERIFYPEER => false]);
+            [CURLOPT_RETURNTRANSFER => true, CURLOPT_HTTPHEADER => ['Authorization: Your Token', 'Content-Type: multipart/form-data'], CURLOPT_POST => true, CURLOPT_POSTFIELDS => ['file' => new CURLFile($file)], CURLOPT_TIMEOUT => 20, CURLOPT_SSL_VERIFYPEER => false]);
         $result = curl_exec($ch);
         curl_close($ch);
         unlink($file);
