@@ -65,8 +65,5 @@ fetch(`${new URL(window.location)["origin"]}/path-to-php-file?config=History`, {
 ### Something Else
 
    [![在线状态](https://img.shields.io/website?down_color=red&down_message=Offline&label=在线实例&style=for-the-badge&up_color=green&up_message=Online&url=https://service-api.sgguo.com/verification/Handle.php)](https://service-api.sgguo.com/verification/Handle.php)   [![License](https://img.shields.io/github/license/Sgguo-Development-Team/VerificationCode-Public?label=%E6%88%91%E4%BB%AC%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8&style=for-the-badge)](https://github.com/Sgguo-Development-Team/VerificationCode-Public/blob/main/LICENSE)   [![Github](https://img.shields.io/github/followers/Sgguo-Development-Team?label=%E6%AD%A3%E5%9C%A8%E5%85%B3%E6%B3%A8%E5%BC%80%E5%8F%91%E5%B0%8F%E7%BB%84&logo=github&style=for-the-badge)](https://github.com/Sgguo-Development-Team)
-
-- Our Logo:
-
-<img align="center" alt="SDT-Logo" src="https://avatars.githubusercontent.com/u/109358425?s=300">
-<p align="center">Powered by SDT.</p>
+   
+<p align="center">Powered by SDT & Gong_cx.</p>
