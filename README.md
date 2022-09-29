@@ -38,23 +38,34 @@
 JavaScript 于客户端的实现:
 
 ```javascript
-// 注：config 可改为 Chemical | 链接自己想
-fetch(`${new URL(window.location)["origin"]}/path-to-php-file?config=History`, {
-    method: "GET",
-    mode: "no-cors", // no-cors, *cors, same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-    },
-    referrerPolicy: "no-referrer",
-})
-    .then((response) => response.json())
-    .then((data) => {
-        // Your Code
-    })
-    .catch((e) => {
-        throw e;
+// 注：config 可改为 Chemical
+"use strict";
+function getVerification(url, method = 'GET', data = {}, err = e => { throw e; }) {
+    method = method.toUpperCase();
+    const requestHeader = {
+        headers: {
+            'content-type': 'application/json',
+        },
+        method
+    };
+    if (method === 'GET') {
+        let esc = encodeURIComponent;
+        let queryParams = Object.keys(data)
+            .map(k => `${esc(k)}=${esc(data[k])}`)
+            .join('&');
+        if (queryParams)
+            url += `?${queryParams}`;
+    }
+    else {
+        requestHeader.body = JSON.stringify(data);
+    }
+    return fetch(url, requestHeader).then(
+    // 注意自己修改错误处理机制
+    response => response.json()).catch(err);
+};
+
+const response = getVerification('Your API', 'GET', { config: 'Something...' }, e => {console.error(e)}).then((res) => {
+    // Your Code;
 });
 ```
 
