@@ -5,7 +5,7 @@
 ## 技术栈：
 
 - MySQL
-- PHP 7.4
+- PHP 8+
 
 ## How to USE?
 
@@ -17,11 +17,11 @@
 6. 看下面
 
 
-### 接口细节
+### API 实现细节
 
 请求内容：
 
-```GET HTTP/1.1 https://example/verification/Handle.php?config=History```
+```GET HTTP/1.1 https://example/path-to-handle?config=History```
 
 理想的返回值：
 ```json
@@ -75,6 +75,10 @@ getVerificationCode
   });
 
 ```
+
+### 其他我想说的
+
+本项目有极大的可拓展性，返回结果就是个 Array，所以不止于 API 和 客户端的实现，你也可以不使用云服务方案，在本地 caches 文件夹进行本地操作，操作细节可以自己看代码
 
 ### Slogan
 
