@@ -37,36 +37,43 @@
 
 JavaScript 于客户端的实现:
 
-```javascript
-// 注：config 可改为 Chemical
-"use strict";
-function getVerification(url, method = 'GET', data = {}, err = e => { throw e; }) {
-    method = method.toUpperCase();
-    const requestHeader = {
-        headers: {
-            'content-type': 'application/json',
-        },
-        method
-    };
-    if (method === 'GET') {
-        let esc = encodeURIComponent;
-        let queryParams = Object.keys(data)
-            .map(k => `${esc(k)}=${esc(data[k])}`)
-            .join('&');
-        if (queryParams)
-            url += `?${queryParams}`;
-    }
-    else {
-        requestHeader.body = JSON.stringify(data);
-    }
-    return fetch(url, requestHeader).then(
-    // 注意自己修改错误处理机制
-    response => response.json()).catch(err);
-};
+```typescript
+// 使用前请进行实例化，传 baseURL:string，在使用时直接使用此方法：实例化变量.getVerification('History'); 或其他配置，注意返回值为 Fetch 构造的 Promise
+class Verification {
+  baseURL: string;
+  constructor(baseURL: string) {
+    this.baseURL = baseURL;
+  }
+  public throwError(e: object) {
+    throw e;
+  }
+  public getVerification(config: string): any {
+    return fetch(`${this.baseURL}/${config}`, {
+      method: "GET",
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      redirect: "follow", // manual, *follow, error
+    });
+  }
+}
+const getVerificationCode = new Verification("https://example");
 
-const response = getVerification('Your API', 'GET', { config: 'Something...' }, e => {console.error(e)}).then((res) => {
-    // Your Code;
-});
+getVerificationCode
+  .getVerification("History")
+  .then((res: any) => {
+    res.json();
+  })
+  .then((data: any) => {
+    // Your Code
+  })
+  .catch((err: any) => {
+    // 你的错误处理机制
+  });
+
 ```
 
 ### Slogan
