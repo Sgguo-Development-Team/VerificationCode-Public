@@ -1,0 +1,9 @@
+{
+  "require": {
+    "zgldh/gd-text-for-chinese": "^1.0",
+    "ext-gd": "*",
+    "ext-curl": "*",
+    "ext-mysqli": "*",
+    "ext-json": "*"
+  }
+}
