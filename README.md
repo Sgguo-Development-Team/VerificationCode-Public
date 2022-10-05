@@ -44,11 +44,8 @@ class Verification {
   constructor(baseURL: string) {
     this.baseURL = baseURL;
   }
-  public throwError(e: object) {
-    throw e;
-  }
   public getVerification(config: string): any {
-    return fetch(`${this.baseURL}/${config}`, {
+    return fetch(`${this.baseURL}/?config=${config}`, {
       method: "GET",
       mode: "cors", // no-cors, *cors, same-origin
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
