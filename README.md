@@ -5,33 +5,32 @@
 ## 技术栈：
 
 - MySQL
-- PHP 8+
+- Node.js
+- Express.js
 
 ## How to USE?
 
-1. 首先你需要进行一个环境的装
-2. 其次你需要导入根目录的 SQL
-3. 然后你需要修改数据配置
-4. 运行 ```composer install``` 安装所需包
-5. 记得找一个大冤种图床或者自己建一个，否则会一直占用空间
-6. 看下面
+1. 类似主分支的方法
+2. 装包用 npm install
 
 
 ### API 实现细节
 
 请求内容：
 
-```GET HTTP/1.1 https://example/path-to-handle?config=History```
+```GET HTTP/1.1 https://example/path-to-handle```
 
 理想的返回值：
 ```json
 {
-  "ID": "9889",
-  "Type": "History",
-  "Value": "https://public-img.mycdn.sgguo.com/2022/09/25/21/1664096215-633017d73fcf3.png",
-  "Question": "请输入上图事件发生日期",
-  "Note": "格式例如：11451400，公元前请加 '-'表示",
-  "Answer": "8ebe69b8410442e39a3e3cc899608c09"
+    "code": 200,
+    "data": {
+        "ID": 1661,
+        "Type": "Chemical",
+        "Value": "https://www.chemicalbook.com/CAS/GIF/4930-98-7.gif",
+        "Question": "请输入上图物质的分子式",
+        "Answer": "42479147129f98886ab55b55ffdb9938"
+    }
 }
 ```
 
@@ -75,7 +74,7 @@ getVerificationCode
 
 ### 其他我想说的
 
-本项目有极大的可拓展性，返回结果就是个 Array，所以不止于 API 和 客户端的实现，你也可以不使用云服务方案，在本地 caches 文件夹进行本地操作，操作细节可以自己看代码
+暂时只实现了 API
 
 ### Slogan
 
