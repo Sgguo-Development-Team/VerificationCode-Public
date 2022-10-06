@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const crypto = require("crypto");
-const useragent = require("express-useragent");
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -21,10 +20,7 @@ const Hash = (str) => {
   return hash.digest("hex");
 };
 
-app.use(useragent.express());
-
 app.get("/api/getVerification/", (req, res) => {
-  console.log(Object.assign(req.useragent, { URI: "/api/getVerification/" }));
   connection.query(
     `SELECT * FROM sd_vcode ORDER BY rand() LIMIT 1`,
     (err, queryResult) => {
@@ -48,7 +44,6 @@ app.get("/api/getVerification/", (req, res) => {
 });
 
 app.get("/api/getAnswer/:id", (req, res) => {
-  console.log(Object.assign(req.useragent, { URI: "/api/getAnswer/:id" }));
   const id = req.params["id"] ?? res.status(403).send("请指定 ID");
   connection.query(
     `SELECT answer FROM sd_vcode WHERE id = ${id}`,
