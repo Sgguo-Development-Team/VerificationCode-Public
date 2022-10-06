@@ -11,9 +11,6 @@ const connection = mysql.createConnection({
   database: "verification",
 });
 
-// 连接 Db
-connection.connect();
-
 const Hash = (str) => {
   const hash = crypto.createHash("md5");
   hash.update(str);
@@ -21,6 +18,8 @@ const Hash = (str) => {
 };
 
 app.get("/api/getVerification/", (req, res) => {
+  // 连接 Db
+  connection.connect();
   connection.query(
     `SELECT * FROM sd_vcode ORDER BY rand() LIMIT 1`,
     (err, queryResult) => {
@@ -45,6 +44,8 @@ app.get("/api/getVerification/", (req, res) => {
 
 app.get("/api/getAnswer/:id", (req, res) => {
   const id = req.params["id"] ?? res.status(403).send("请指定 ID");
+  // 连接 Db
+  connection.connect();
   connection.query(
     `SELECT answer FROM sd_vcode WHERE id = ${id}`,
     (err, queryResult) => {
