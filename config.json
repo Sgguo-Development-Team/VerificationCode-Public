@@ -1,0 +1,10 @@
+{
+  "database": {
+    "host": "localhost",
+    "user": "root",
+    "password": "RootDBUser",
+    "port": 3306,
+    "database": "verification"
+  },
+  "port": 5500
+}
