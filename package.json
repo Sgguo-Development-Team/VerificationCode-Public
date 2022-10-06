@@ -1,0 +1,16 @@
+{
+  "name": "verification",
+  "version": "1.0.0",
+  "description": "A demo of verification in Node.js with Express",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js"
+  },
+  "author": "Gong_cx",
+  "license": "GPL v3",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-useragent": "^1.0.15",
+    "mysql": "^2.18.1"
+  }
+}
