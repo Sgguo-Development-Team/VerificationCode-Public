@@ -62,10 +62,9 @@ const getVerificationCode = new Verification("https://example");
 getVerificationCode
   .getVerification("History")
   .then((res: any) => {
-    res.json();
-  })
-  .then((data: any) => {
+    res.json().then((data: any) => {
     // Your Code
+    });
   })
   .catch((err: any) => {
     // 你的错误处理机制
